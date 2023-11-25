@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz</title>
+    <style> *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Josefin Sans ,sans-serif";
+        font-weight: 300;
+    
+     }
+    
+     html{
+        font-size:62.5%;
+     }
+     
+    
+     .main-div{
+        width: 100vw;
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        background-color: rgb(15, 14, 15);
+        /* background: url('/img/space.jpg') no-repeat center center fixed; */
+        background-size: cover;
+        font-family: 'Arial', sans-serif;
+        margin: 0;
+        padding: 0;
+        /* background-color:rgb(85, 173, 199); */
+     }
+    
+     .inner-div{
+        width: 70vh;
+        opacity: 0;
+        
+      border-radius: 12px;
+        color: white;
+        padding: 3rem 8rem;
+        border-radius: 1rem;
+        pointer-events: none;
+        transform: scale(0.9);
+        box-shadow: 0 1rem 1rem -0.7rem rgba(0,0,0,0.8);
+     }
+    
+    
+    .inner-div.active_info{
+       z-index: 5;
+       opacity: 1;
+       background:#7d7c7c;
+        border: 2px solid rgba(6, 45, 51, 0.469);
+        border-radius: 0.5rem;
+      backdrop-filter: blur(5px);
+      color: #fff;
+       /* opacity: 0.2; */
+       pointer-events: auto;
+        transform: scale(1);
+    }
+    .blurred-line {
+       position: relative;
+       width: 100%;
+       height: 2px;
+       background-color: transparent;
+    }
+    
+    .blurred-line::before {
+       content: '';
+       position: absolute;
+       top: 0;
+       left: 0;
+       width: 100%;
+       height: 100%;
+       box-shadow: 0 0 10px 5px white; 
+    }
+    .text-heading{
+       font-size: 30px;
+       border: 1px solid white;
+       padding: 1rem 2rem;
+       
+    }
+     .inner-div h2{
+        font-size: 2rem;
+        font-weight: 400;
+        margin-top: 1rem 0 4rem 0;
+    
+     }
+     .heading{
+       display: flex;
+       justify-content: space-between;
+       padding-bottom: 2rem;
+     }
+    
+     .inner-div li{
+        font-size: 2rem;
+         margin-top: 1.5rem;
+         list-style: none;
+    
+     }
+     input{
+        cursor: pointer;
+     }
+    #button{
+       display: flex;
+       flex-direction: row-reverse;
+    }
+     #next,#prev, .btn1,.btn2,.btn3{
+         padding: 1rem 3rem;
+         outline: none;
+         font-size: 2rem;
+         border-radius: 0.5rem;
+         font-size: 400;
+         display: block;
+         margin: auto;
+         border: none;
+         text-transform: uppercase;
+         color:#fff;
+         background-color: #6e6e6f;
+         margin-top:4rem ;
+         
+     }
+    #button{
+       display: flex;
+    
+    }
+    
+     #next:hover,#prev:hover{
+        background-color: #3e3f3f;
+     }
+    
+    .nextDisplay{
+       position: relative;
+       display: block;
+       /* flex-direction: row; */
+    }
+    
+    
+     #showScore{
+      
+    /* position: absolute; */
+        z-index:1;
+         background:transparent;
+        border: 2px solid rgba(6, 45, 51, 0.469);
+        border-radius: 0.1rem;
+      backdrop-filter: blur(5px);
+      /* color: #fff; */
+        backdrop-filter: 5px;
+        margin-top: 3 rem;
+        padding: 3rem 4rem;
+        box-shadow: 0 1rem 1rem -0.7rem rgba(0,0,0,0.8);
+       
+     }
+    
+     #showScore h3{
+       font-size: 3rem;
+       text-align: center;
+       color:white;
+    
+     }
+    
+     #showScore .btn1,.btn2,.btn3{
+        margin-top: 2rem;
+        background-color: #0d1c71;
+        color: white;
+        /* color: #2d3436; */
+     }
+    #btnn2{
+       display: none;
+    }
+     #showScore .btn1:hover ,.btn2:hover,.btn3:hover{
+        margin-top: 2rem;
+        color: white;
+        background-color: #0984e3;
+        color: #fff;
+     }
+    
+     .scoreArea{
+       display: none;
+    }
+    .start_btn{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 
+                    0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    }
+    .start_btn button{
+       opacity: 1;
+       background-color: rgba(255, 0, 0, 0.5);
+       color:white;
+       font-size: 25px;
+       font-weight: 500;
+       /* color: #007bff; */
+       padding: 15px 30px;
+       outline: none;
+       border: none;
+       border-radius: 5px;
+       background-color:  #848486;
+       
+       cursor: pointer;
+    }
+    .start_btn button:hover {
+       opacity: 0.8;
+       /* transform: scale(1.1); */
+       background-color: #3a3a3a;
+       transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out, background-color 0.3s ease-in-out;
+       /* background: #fff; */
+       /* color:black; */
+    }
+    .start_btn.active{
+       opacity: 0;
+    }
+    .question{
+       padding-top: 1rem;
+    }
+    #result{
+       z-index: 3; 
+       position: absolute; 
+       top: 50%; 
+       left: 50%; 
+       transform: translate(-50%, -50%);
+        margin-top: 3 rem;
+        padding: 3rem 4rem;
+        box-shadow: 0 1rem 1rem -0.7rem rgba(0,0,0,0.8);
+        display: flex;
+        display: none;
+        flex-direction: row;
+        justify-content: space-around;
+        animation-name: showResult;
+        animation-duration: 0.5s;
+        animation-timing-function: ease-in-out;
+    }
+    
+    @keyframes showResult {
+       0% {
+           transform: translate(-50%, -50%) scale(0); /* Start from smaller size while centered */
+           opacity: 0;
+       }
+       100% {
+           transform: translate(-50%, -50%) scale(1); /* Grow while remaining centered */
+           opacity: 1;
+       }
+    }
+    
+    .correct,.wrong{
+       font-size: 1rem;
+       flex: 1;
+       text-align: center;
+       padding: 1rem;
+       box-shadow: 0 1rem 1rem -0.7rem rgba(0,0,0,0.8);
+       padding: 1rem;
+    }
+    
+    
+    
+    .resultdisplay{
+    
+       display: none;
+    }
+    
+     /* timer */
+     .timer{
+       color: #004085;
+       background: #cce5ff;
+       border: 1px solid #b8daff;
+       height: 45px;
+       padding: 0 8px;
+       border-radius: 5px;
+       display: flex;
+       align-items: center;
+       justify-content: space-between;
+       width: 145px;
+    }
+    
+    .timer .time_left_txt{
+       font-weight: 400;
+       font-size: 17px;
+       user-select: none;
+    }
+    
+    .timer .timer_sec{
+       font-size: 18px;
+       font-weight: 500;
+       height: 30px;
+       width: 45px;
+       color: #fff;
+       border-radius: 5px;
+       line-height: 30px;
+       text-align: center;
+       background: #343a40;
+       border: 1px solid #343a40;
+       user-select: none;
+    }
+    
+    
+    .time_line{
+       position: absolute;
+       bottom: 0px;
+       left: 0px;
+       height: 3px;
+       background: #007bff;
+    }
+    
+    </style>
+</head>
+<body>
+    <div class="main-div" class="main">
+        <div class="start_btn"><button class="inbutton">Start Quiz</button></div>
+        <div class="inner-div" id="inner">
+            <div class="heading">
+                <div class="text-heading"> Quiz</div>
+                <div class="timer">
+                    <div class="time_left_txt">Time Left</div>
+                    <div class="timer_sec"></div>
+                </div>
+
+                <div class="time_line"></div>
+                
+            </div>
+            <hr class="blurred-line">
+            <h2><div class="question">ques here</div></h2>
+            <ul>
+                <li>
+                    <input type="radio" name="answer" id="ans1" class="answer">
+                    <label for="ans1" id="option1">Anser opt</label>
+                </li>
+                <li>
+                    <input type="radio" name="answer" id="ans2" class="answer">
+                    <label for="ans2" id="option2">Anser opt</label>
+                </li>
+                <li>
+                    <input type="radio" name="answer" id="ans3" class="answer">
+                    <label for="ans3" id="option3">Anser opt</label>
+                </li>
+                <li>
+                    <input type="radio" name="answer" id="ans4" class="answer">
+                    <label for="ans4" id="option4">Anser opt</label>
+                </li >
+            </ul>
+            
+                
+               
+            
+                <div id="button">
+                    <button id="next">Next</button>
+                    <button id="prev">Previous</button>
+                 </div>
+                 
+                 <div class="nextDisplay">
+                    <div id="showScore" class="scoreArea">
+                       
+                    </div>
+                    <div id="result"  class="resultDisplay" >
+                        
+                        <div class="correct">
+                            <p>Correct Answer<p>
+                              
+                        </div>
+                       
+                        <div class="wrong">
+                            <p>Wrong Answer</p>
+                                   
+                        </div>
+                 </div>
+                    
+                    </div>
+            
+            
+            <script >//quiz ques
+
+
+                const quizDB=[
+                    {
+                    question:"Q1:What is my name a?",
+                    a:"aryan",
+                    b:"adeeb",
+                    c:"vaibhav",
+                    d:"none",
+                    ans:"ans1"
+                },
+                {
+                    question:"Q2:What is your name b?",
+                    a:"aryan",
+                    b:"adeeb",
+                    c:"vaibhav",
+                    d:"none",
+                    ans:"ans2"
+                },
+                {
+                    question:"Q3:select ans name c?",
+                    a:"aryan",
+                    b:"adeeb",
+                    c:"vaibhav",
+                    d:"none",
+                    ans:"ans3"
+                },
+                {
+                    question:"Q4:whya re is my name d?",
+                    a:"aryan",
+                    b:"adeeb",
+                    c:"vaibhav",
+                    d:"none",
+                    ans:"ans4"
+                },
+                
+                ]
+                
+                const question=document.querySelector('.question');
+                const option1=document.querySelector('#option1');
+                const option2=document.querySelector('#option2');
+                const option3=document.querySelector('#option3');
+                const option4=document.querySelector('#option4');
+                const answers=document.querySelectorAll('.answer');
+                const next=document.querySelector('#next');
+                const previous=document.querySelector('#prev');
+                const showScore=document.querySelector('#showScore');
+                
+                const resultDisplay=document.querySelector('.resultDisplay');
+                
+                
+                let questionCount=0;
+                let score=0;
+                const loadQuestion=()=>{
+                   
+                    const quesList=quizDB[questionCount];
+                   question.innerText=quesList.question;
+                
+                   option1.innerText=quesList.a;
+                   option2.innerText=quesList.b;
+                   option3.innerText=quesList.c;
+                   option4.innerText=quesList.d;
+                }
+                
+                loadQuestion();
+                
+                const getCheckAns=()=>{
+                    let answer;
+                
+                    answers.forEach((currAnsElem) => {
+                        if(currAnsElem.checked){
+                            answer=currAnsElem.id;
+                        }
+                    
+                    });
+                    return answer;
+                
+                }
+                const correctAnswers = []; // Array to store indices of correctly answered questions
+                const wrongAnswers = [];
+                const deselectALL=(curr) =>{
+                    answers.forEach((curr)=>curr.checked=false);
+                }
+                // function madefunct(){
+                //     const resultb=document.querySelector('#result');
+                //    resultb.style.display='block';
+                // }
+                function closeresult() {
+                    const resultDisplay = document.querySelector('.resultDisplay');
+                    resultDisplay.style.display = 'none';
+                    showScore.classList.remove('scoreArea');
+                }
+                function madefunct() {
+                    const resultDisplay = document.querySelector('.resultDisplay');
+                    resultDisplay.style.display = 'block';
+                    showScore.classList.add('scoreArea');
+                
+                    let resultHTML = '<h2>Correct Answers:</h2><ul>';
+                    correctAnswers.forEach((index) => {
+                        resultHTML += `<li>${index}</li>`;
+                    });
+                    resultHTML += '</ul><h2>Wrong Answers:</h2><ul>';
+                    wrongAnswers.forEach((index) => {
+                        resultHTML += `<li>${index}</li>`;
+                    });
+                    resultHTML += '</ul>';
+                
+                    resultDisplay.innerHTML = resultHTML;
+                    resultDisplay.innerHTML+=`
+                    <button class="btn3" onclick="closeresult()">Back</button>`;
+                }
+                
+                
+                next.addEventListener('click', () => {
+                    const checkAns = getCheckAns();
+                    if (checkAns === quizDB[questionCount].ans) {
+                        score++;
+                        correctAnswers.push(questionCount+1);
+                    } else {
+                        wrongAnswers.push(questionCount+1);
+                    }
+                    questionCount++;
+                    deselectALL();
+                    if (questionCount < quizDB.length) {
+                        loadQuestion();
+                    } else {
+                        showScore.innerHTML = `
+                            <h3>You scored ${score}/${quizDB.length} ✌️</h3>
+                            <div>
+                                
+                                <button class="btn2" onclick="madefunct()">Result</button>
+                            </div>`;
+                        showScore.classList.remove('scoreArea');
+                    }
+                });
+                
+                prev.addEventListener('click', () => {
+                    const checkAns = getCheckAns();
+                    if (checkAns === quizDB[questionCount].ans) {
+                        score++;
+                    }else{
+                        score--;
+                    }
+                    questionCount--;
+                    deselectALL();
+                    if (questionCount >=0) {
+                        loadQuestion();
+                    } else{
+                        questionCount=0;
+                    }
+                });
+                
+                
+                
+                
+                const start_btn = document.querySelector('.inbutton');
+                //const inner = document.querySelector('.inner');
+                let timestart=quizDB.length * 5;
+                start_btn.onclick = () => {
+                    inner.classList.add('active_info');
+                    start_btn.style.opacity=0;
+                    startTimer(timestart-1);
+                };
+                
+                const timeText = document.querySelector('.time_left_txt');
+                const timeCount = document.querySelector('.timer_sec');
+                const time_line = document.querySelector(".time_line");
+                timeCount.innerText=timestart;
+                let counter;
+                
+                function startTimer(time) {
+                    counter = setInterval(timer, 1000);
+                
+                    function timer() {
+                        timeCount.textContent = time;
+                        time--; 
+                
+                        if (time < 10) {
+                            timeCount.textContent = "0" + time;
+                        }
+                
+                        if (time < 0) {
+                            clearInterval(counter);
+                            timeText.textContent = "Time Off";
+                
+                            // Add code to handle the time being off, such as submitting the quiz or showing results.
+                            // Example:
+                            showScore.innerHTML = `
+                                <h3>You scored ${score}/${quizDB.length} ✌️</h3>
+                                <div>
+                                    <button class="btn2" onclick="madefunct()">Result</button>
+                                </div>`;
+                            showScore.classList.remove('scoreArea');
+                        }
+                        if (questionCount >= quizDB.length) {
+                            clearInterval(counter); // Stop the timer
+                            return;
+                        }
+                    }
+                }
+                
+                  //line
+                  function startTimerLine(time){
+                    counterLine = setInterval(timer, 29);
+                    function timer(){
+                        time += 1; //upgrading time value with 1
+                        time_line.style.width = time + "px"; //increasing width of time_line with px by time value
+                        if(time > 549){ //if time value is greater than 549
+                            clearInterval(counterLine); //clear counterLine
+                        }
+                    }
+                }</script>
+        </div>
+    </div>
+    
+</body>
+</html>
