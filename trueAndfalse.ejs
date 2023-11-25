@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>True/False Quiz</title>
+    <link rel="stylesheet" href="/css/trueAndfalse.css">
+</head>
+<body>
+    <div class="start_btn"><button class="inbutton">Start Quiz</button></div>
+
+
+    <div class="quiz " class="inner">
+            <div class="heading">
+                <div class="text-heading" style="font-size: 30px;">Quiz</div>
+                <div class="timer">
+                    <div class="time_left_txt">Time Left</div>
+                    <div class="timer_sec"></div>
+                </div>
+                <div class="time_line"></div>
+            </div>
+            
+        <h1>True or False?</h1>
+        <div class="question">ques</div>
+        <div class="options">
+            <button class="answer" id="true">True</button>
+            <button class="answer" id="false">False</button>
+        </div>
+        <div id="button">
+            <button id="next">Next</button>
+            <button id="prev">Previous</button>
+         </div>
+         
+    </div>
+    <div class="nextDisplay">
+        <div id="showScore" class="scoreArea">
+           
+        </div>
+        <div id="result"  class="resultDisplay" >
+            
+            <div class="correct">
+                <p>Correct Answer<p>
+                  
+            </div>
+           
+            <div class="wrong">
+                <p>Wrong Answer</p>
+                       
+            </div>
+     </div>
+  
+    <script src="/js/trueAndfalse.js"></script>
+</body>
+</html>
