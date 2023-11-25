@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Buttons</title>
+    <!-- <link rel="stylesheet" href="/css/styleSelect.css"> -->
+    <style>
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+    
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        background-color:black;
+        /* background-image: url(/back/views/img/space.jpg); */
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    
+    .button-container {
+        display: flex;
+        flex-direction: column; 
+        justify-content: center; 
+        align-items: center; 
+        background-color:transparent;
+    
+    }
+    
+    .button {
+        background-color:transparent;
+        color: #fff;
+        padding: 20px; 
+        margin: 10px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+        text-align: center;
+        text-decoration: none;
+        transition: background-color 0.3s;
+        width: 200px; 
+        display: flex;
+        justify-content: center; 
+        align-items: center;
+        border: solid 2px;
+        text-decoration: underline white;
+    }
+    
+    .button:hover {
+        background-color: #c6c8ca;
+        color: black;
+    }
+    
+    @media (max-width: 768px) {
+    
+        .button-container {
+            flex-direction: column; 
+        }
+    
+        .button {
+            margin: 5px;
+        }
+    }
+    </style>
+</head>
+<body>
+    <div class="button-container">
+        <a href="/ques1" onclick="toggleNav()"><button class="button">Single Correct</button></a>
+        <a href="/html/ques1.html" target="_blank"> <button class="button">Multiple Correct</button></a>
+       <a href="/html/trueAndfalse.html" target="_blank"><button class="button">True/False</button></a>
+        
+        <!-- <button class="button">Short Answer</button> -->
+        <!-- <button class="button">Long Answer</button> -->
+    </div>
+</body>
+</html>
