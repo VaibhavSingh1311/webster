@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question Ui</title>
+    <link rel="stylesheet" href="/css/styleQuizUi.css">
+</head>
+<body>
+   <div class="main-div">
+       <div class="inner-div">
+        <!-- question will contain no. and statement -->
+          <h2 class="questag">Question #: </h2>
+          <ul>
+            <!--mcq can be handled by naem section-->
+              <li>
+                 <input type="radio" name="answer" id="ans1" class="answer">
+                 <label for="ans1" id="option1">Answer</label>
+              </li>
+              <li>
+                <input type="radio" name="answer" id="ans1" class="answer">
+                <label for="ans1" id="option1">Answer</label>
+             </li>
+             <li>
+                <input type="radio" name="answer" id="ans1" class="answer">
+                <label for="ans1" id="option1">Answer</label>
+             </li>
+             <li>
+                <input type="radio" name="answer" id="ans1" class="answer">
+                <label for="ans1" id="option1">Answer</label>
+             </li>
+          </ul>
+          <div class="bt-container">
+            <button class="btn" id="prev">Prev</button>
+            <button class="btn" id="save">Save && Next</button>
+            <button class="btn" id="next">Next</button>
+          </div>
+       </div>
+
+       <div class="footer">
+         <ul class="number-buttons">
+            <!-- Set the "active" class on the button corresponding to the current question -->
+            <li class="number-button active">1</li>
+            <li class="number-button">2</li>
+            <li class="number-button">3</li>
+            <li class="number-button">4</li>
+            <li class="number-button">5</li>
+            <li class="number-button">6</li>
+            <li class="number-button">7</li>
+            <li class="number-button">8</li>
+            <li class="number-button">9</li>
+            <li class="number-button">10</li>
+         </ul>
+      </div>
+
+   </div>
+
+   <script src="/js/scriptQuizUi.js"></script>
+</body>
+</html>

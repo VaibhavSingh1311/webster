@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Website</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+        }
+
+        #video-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        #video-background {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1; 
+        }
+
+        #header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px;
+            box-sizing: border-box;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        #logo {
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+        }
+
+        #header-buttons {
+            display: flex;
+            gap: 20px;
+        }
+
+        #header-buttons button {
+            background-color: transparent;
+            border: none;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        #header-buttons button:hover {
+            text-decoration: underline;
+        }
+
+        @media screen and (max-width: 768px) {
+            #header {
+                padding: 10px;
+            }
+
+            #logo {
+                width: 30px;
+                height: 30px;
+            }
+
+            #header-buttons {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            #header-buttons button {
+                font-size: 14px;
+            }
+        }
+
+        h1 {
+            color: white;
+            font-size: 6rem;
+            text-align: center;
+            position: relative; 
+            z-index: 1; 
+            margin-top: 45vh;
+            transition: 0.5s;
+        }
+        h1:hover{
+          -webkit-text-stroke: 2px #fff;
+          color: transparent;
+        }
+    </style>
+</head>
+<body>
+    <div id="video-container">
+
+        <video id="video-background" autoplay muted loop>
+            <source src="/img/space.video.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+    <div id="header">
+        <img id="logo" src="/img/icons8-atomic-64.png" alt="Logo">
+        <div id="header-buttons">
+            
+            <a href="/html/login.html"><button onclick="login()">Admin</button></a>
+            <a href="/html/login.html"><button onclick="login()">Student</button></a>
+            <!-- <button onclick="signup()">Student</button> -->
+            <!-- <button onclick="dashboard()">Dashboard</button> -->
+        </div>
+    </div>
+
+    <h1>Quiz-Maker</h1>
+
+    <script>
+        function login() {
+            // Handle login button click
+            console.log('Login clicked');
+        }
+
+        function signup() {
+            // Handle signup button click
+            console.log('Signup clicked');
+        }
+
+        function dashboard() {
+            // Handle dashboard button click
+            console.log('Dashboard clicked');
+        }
+    </script>
+</body>
+</html>

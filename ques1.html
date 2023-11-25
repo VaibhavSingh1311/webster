@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz</title>
+    <link rel="stylesheet" href="/css/ques1.css">
+</head>
+<body>
+    <div class="main-div" class="main">
+        <div class="start_btn"><button class="inbutton">Start Quiz</button></div>
+        <div class="inner-div" id="inner">
+            <div class="heading">
+                <div class="text-heading"> Quiz</div>
+                <div class="timer">
+                    <div class="time_left_txt">Time Left</div>
+                    <div class="timer_sec"></div>
+                </div>
+
+                <div class="time_line"></div>
+                
+            </div>
+            <hr class="blurred-line">
+            <h2><div class="question">ques here</div></h2>
+            <ul>
+                <li>
+                    <input type="radio" name="answer" id="ans1" class="answer">
+                    <label for="ans1" id="option1">Anser opt</label>
+                </li>
+                <li>
+                    <input type="radio" name="answer" id="ans2" class="answer">
+                    <label for="ans2" id="option2">Anser opt</label>
+                </li>
+                <li>
+                    <input type="radio" name="answer" id="ans3" class="answer">
+                    <label for="ans3" id="option3">Anser opt</label>
+                </li>
+                <li>
+                    <input type="radio" name="answer" id="ans4" class="answer">
+                    <label for="ans4" id="option4">Anser opt</label>
+                </li >
+            </ul>
+            
+                
+               
+            
+                <div id="button">
+                    <button id="next">Next</button>
+                    <button id="prev">Previous</button>
+                 </div>
+                 
+                 <div class="nextDisplay">
+                    <div id="showScore" class="scoreArea">
+                       
+                    </div>
+                    <div id="result"  class="resultDisplay" >
+                        
+                        <div class="correct">
+                            <p>Correct Answer<p>
+                              
+                        </div>
+                       
+                        <div class="wrong">
+                            <p>Wrong Answer</p>
+                                   
+                        </div>
+                 </div>
+                    
+                    </div>
+            
+            
+            <script src="/js/ques1.js"></script>
+        </div>
+    </div>
+    
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-image: url(/img/studback.jpg); 
+            background-size: cover; 
+            background-repeat: repeat;
+            background-position: center center;
+            overflow-x: hidden;
+        }
+
+        #admin-container {
+            text-align: center;
+            background-color: transparent;
+            padding: 50px;
+            border-radius: 8px;
+            border: 2px solid rgb(113, 120, 126); /* Added border property */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        #create-quiz-btn,
+        #view-results-btn {
+            display: inline-block;
+            margin: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #a7a8a9;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        #create-quiz-btn:hover,
+        #view-results-btn:hover {
+            background-color: #626466;
+        }
+        h1{
+            color: #fff;
+        }
+        #create-quiz-btn a{
+            color: #fff;
+            text-decoration: none;
+        }
+
+        @media screen and (min-width: 600px) {
+            #admin-container {
+                max-width: 600px;
+            }
+        }
+    </style>
+    <title>Admin Page</title>
+</head>
+<body>
+    <div id="admin-container">
+        <h1>Admin</h1>
+        <!-- what -->
+        <button id="create-quiz-btn"><a href="select.html">Create Quiz</a></button>
+
+        <button id="view-results-btn">View Results</button>
+    </div>
+</body>
+</html>

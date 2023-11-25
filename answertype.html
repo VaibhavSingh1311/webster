@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question Page</title>
+    <link rel="stylesheet" href="/css/answer.css">
+</head>
+<body>
+<!--text area problem-->
+    <div class="bg">
+        <div class="container">
+            <h2>Question # :</h2>
+           <textarea id="my-text" rows="5" placeholder="Type your answer here...."></textarea> 
+           <p id="result">0/100</p>
+    
+            <h5>Character Limit: 100</h5>
+
+            <div class="bt-container">
+                <button class="btn" id="button1">Prev</button>
+                <button class="btn" id="button2">Save && Next</button>
+                <button class="btn" id="button3">Next</button>
+            </div>
+        </div>
+
+        <div class="footer">
+            <ul class="number-buttons">
+               <!-- Set the "active" class on the button corresponding to the current question -->
+               <li class="number-button active">1</li>
+               <li class="number-button">2</li>
+               <li class="number-button">3</li>
+               <li class="number-button">4</li>
+               <li class="number-button">5</li>
+            </ul>
+         </div>
+
+    </div>
+   
+ <script src="/js/answer.js"></script>
+</body>
+</html>
