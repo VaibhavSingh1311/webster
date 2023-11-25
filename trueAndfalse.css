@@ -1,0 +1,295 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: url('/img/space2.jpeg') no-repeat center center fixed;
+    background-size: cover;
+    height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
+}
+
+.quiz {
+    height: 40vh;
+    width: 60vh;
+    text-align: center;
+    background-color: #fff;
+    padding: 20px;
+    opacity: 0;
+    pointer-events: none;
+     transform: scale(0.9);
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+.quiz.active_info{
+    z-index: 5;
+    opacity: 1;
+    background:transparent;
+    border: 2px solid rgba(6, 45, 51, 0.469);
+    border-radius: 0.1rem;
+  backdrop-filter: blur(5px);
+  color: #fff;
+    pointer-events: auto;
+     transform: scale(1);
+ }
+h1 {
+    margin-bottom: 20px;
+}
+
+.heading{
+    display: flex;
+    justify-content: space-between;
+  }
+
+.options {
+    display: flex;
+   
+    padding-top: 4vh;
+    justify-content: center;
+    gap: 40vh;
+}
+#next,#prev,.btn1,.btn2,.btn3{
+    padding: 0.5rem 1rem;
+    outline: none;
+    font-size: 1rem;
+    /* font-size: 200; */
+    display: block;
+    border-radius: 0.5rem;
+    margin: auto;
+    border: none;
+    text-transform: uppercase;
+    color:#fff;
+    background-color: #0984e3;
+    margin-top:2rem ;
+}
+#button{
+  display: flex;
+  justify-content:space-around;
+  /* transform: translateY(-3rem); */
+}
+
+#next:hover,#prev:hover{
+    opacity: 0.8;
+    /* transform: scale(1.1); */
+    background-color:  #0d1c71;
+    
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out, background-color 0.3s ease-in-out;
+    /* background: #fff; */
+    /* color:black; */
+}
+#true, #false {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.question{
+    font-size:30px;
+    overflow: auto;
+}
+
+#true{
+    background-color: #5cb85c;
+    color: #fff;
+}
+
+#false {
+    background-color: #d9534f;
+    color: #fff;
+}
+
+.nextDisplay {
+    position: absolute;
+    z-index: 10; /* Ensure it appears on top of the quiz */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: block;
+    /* Other styles */
+}
+
+ 
+ 
+  #showScore{
+   
+ /* position: absolute; */
+     z-index:1;
+      background-color: #dfe6e9;
+      top: 50%; 
+      left: 50%; 
+      /* transform: translate(-50%, -50%); */
+     margin-top: 3 rem;
+     padding: 3rem 4rem;
+     box-shadow: 0 1rem 1rem -0.7rem rgba(0,0,0,0.8);
+     animation-name: showscorecard;
+     animation-duration: 0.5s;
+     animation-timing-function: ease-in-out;
+     
+  }
+
+  
+  @keyframes showscorecard {
+    0% {
+        transform:  scale(0); /* Start from smaller size while centered */
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1); /* Grow while remaining centered */
+        opacity: 1;
+    }
+ }
+  #showScore h3{
+    font-size: 3rem;
+    text-align: center;
+ 
+  }
+ 
+  #showScore .btn1,.btn2,.btn3{
+     margin-top: 2rem;
+     color:white;
+     background-color: #55efc4;
+     color: #2d3436;
+  }
+  
+ #btnn2{
+    display: none;
+ }
+  #showScore .btn1:hover ,.btn2:hover,.btn3:hover{
+     margin-top: 2rem;
+     background-color:  #0d1c71;
+   
+     transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out, background-color 0.3s ease-in-out;
+     /* background: #fff; */
+   /* color:black; */
+  }
+ 
+  .scoreArea{
+    display: none;
+ }
+ 
+ 
+ #result{
+    z-index: 3; 
+    position: absolute; 
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -50%);
+     background-color: #989fa2;
+     margin-top: 3 rem;
+     padding: 3rem 4rem;
+     box-shadow: 0 1rem 1rem -0.7rem rgba(0,0,0,0.8);
+     display: flex;
+     display: none;
+     flex-direction: row;
+     justify-content: space-around;
+     animation-name: showResult;
+     animation-duration: 0.5s;
+     animation-timing-function: ease-in-out;
+ }
+ 
+ @keyframes showResult {
+    0% {
+        transform: translate(-50%, -50%) scale(0); /* Start from smaller size while centered */
+        opacity: 0;
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(1); /* Grow while remaining centered */
+        opacity: 1;
+    }
+ }
+ 
+ .correct,.wrong{
+    font-size: 1rem;
+    flex: 1;
+    text-align: center;
+    padding: 1rem;
+    box-shadow: 0 1rem 1rem -0.7rem rgba(0,0,0,0.8);
+    padding: 1rem;
+ }
+ 
+ 
+ 
+ .resultdisplay{
+ 
+    display: none;
+ }
+ 
+ .start_btn{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 
+                0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.start_btn button{
+   opacity: 1;
+   background-color: rgba(255, 0, 0, 0.5);
+   color:white;
+   font-size: 25px;
+   font-weight: 500;
+   /* color: #007bff; */
+   padding: 15px 30px;
+   outline: none;
+   border: none;
+   border-radius: 5px;
+  
+   background-color: #0984e3;
+   cursor: pointer;
+}
+.start_btn button:hover {
+   opacity: 0.8;
+   /* transform: scale(1.1); */
+   background-color:  #0d1c71;
+   
+   transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out, background-color 0.3s ease-in-out;
+   /* background: #fff; */
+   /* color:black; */
+}
+.start_btn.active{
+   opacity: 0;
+}
+ .timer{
+    color: #004085;
+    background: #cce5ff;
+    border: 1px solid #b8daff;
+    height: 45px;
+    padding: 0 8px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 145px;
+ }
+ 
+ .timer .time_left_txt{
+    font-weight: 400;
+    font-size: 17px;
+    user-select: none;
+ }
+ 
+ .timer .timer_sec{
+    font-size: 18px;
+    font-weight: 500;
+    height: 30px;
+    width: 45px;
+    color: #fff;
+    border-radius: 5px;
+    line-height: 30px;
+    text-align: center;
+    background: #343a40;
+    border: 1px solid #343a40;
+    user-select: none;
+ }
+ 
+ 
+ .time_line{
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    height: 3px;
+    background: #007bff;
+ }
+ 
